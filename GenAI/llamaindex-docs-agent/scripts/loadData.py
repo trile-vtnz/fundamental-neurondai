@@ -13,7 +13,7 @@ Settings.chunk_size = 1000
 Settings.chunk_overlap = 50
 Settings.embed_model = OpenAIEmbedding(model="text-embedding-3-small", api_key=os.getenv("openai_api_key"))
 
-qc = QdrantClient("http://localhost:6333")
+qc = QdrantClient("http://vector_db:6333")
 vector_store = QdrantVectorStore(collection_name="llamaindex-docs",client=qc, enable_hybrid=True)
 docs = SimpleDirectoryReader(input_dir="data", recursive=True).load_data()
 storage_context = StorageContext.from_defaults(vector_store=vector_store)

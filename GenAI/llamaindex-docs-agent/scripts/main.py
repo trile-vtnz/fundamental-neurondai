@@ -25,10 +25,10 @@ Settings.llm = OpenAI(api_key=os.getenv("openai_api_key"), model="gpt-4o-mini")
 Settings.chunk_size = 1000
 Settings.chunk_overlap = 50
 Settings.embed_model = OpenAIEmbedding(model="text-embedding-3-small", api_key=os.getenv("openai_api_key"))
-qc = QdrantClient("http://localhost:6333")
+qc = QdrantClient("http://vector_db:6333", port=6333, grpc_port=6333)
 vector_store = QdrantVectorStore(client=qc, collection_name="llamaindex-docs", enable_hybrid=True)
 v_index = VectorStoreIndex.from_vector_store(vector_store=vector_store)
-s_context = StorageContext.from_defaults(persist_dir="../summary")
+s_context = StorageContext.from_defaults(persist_dir="/app/summary")
 s_index = load_index_from_storage(storage_context=s_context)
 v_engine = v_index.as_query_engine()
 s_engine = s_index.as_query_engine()

@@ -9,8 +9,8 @@ COPY . /app/
 RUN pip install --no-cache-dir -r requirements.txt 
 
 # Expose the application port
-EXPOSE 8000
+EXPOSE 8000 6334 6333
 
 # Run the application
 CMD python /app/scripts/loadData.py && \
-    uvicorn app.scripts.main:app --host 0.0.0.0 --port 8000
+    uvicorn scripts.main:app --host 0.0.0.0 --port 8000

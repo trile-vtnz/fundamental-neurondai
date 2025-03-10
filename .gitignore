@@ -1,0 +1,6 @@
+.env
+scripts/__pycache__/
+summary/
+llamaindex_agent.code-workspace
+.mypy_cache/
+qdrant_storage/

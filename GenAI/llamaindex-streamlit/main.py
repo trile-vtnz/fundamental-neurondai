@@ -4,53 +4,74 @@ from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
 from llama_index.llms.openai import OpenAI
 from dotenv import load_dotenv
 
-load_dotenv()
+class DocumentManager:
+    def __init__(self, folder="documents"):
+        self.folder = folder
+        self._ensure_folder_exists()
 
-# Define the folder where documents are stored
-documents_folder = "documents"
+    def _ensure_folder_exists(self):
+        if not os.path.exists(self.folder):
+            os.makedirs(self.folder)
 
-def load_documents():
-    """Loads documents from the specified folder."""
-    if not os.path.exists(documents_folder):
-        os.makedirs(documents_folder)
-    reader = SimpleDirectoryReader(documents_folder)
-    return reader.load_data()
+    def load_documents(self):
+        """Loads documents from the specified folder."""
+        reader = SimpleDirectoryReader(self.folder)
+        return reader.load_data()
 
-def build_index():
-    """Builds an index from the documents."""
-    docs = load_documents()
-    index = VectorStoreIndex.from_documents(docs)
-    return index
+class IndexManager:
+    def __init__(self, document_manager):
+        self.document_manager = document_manager
+        self.index = None
 
-def main():
-    st.set_page_config(page_title="RAG Demo with LlamaIndex", page_icon=":books:")
-    st.title("RAG Demo using LlamaIndex")
+    def build_index(self):
+        """Builds an index from the documents."""
+        docs = self.document_manager.load_documents()
+        self.index = VectorStoreIndex.from_documents(docs)
 
-    st.write("This demo allows you to query documents stored in the `documents` folder.")
+    def get_query_engine(self):
+        """Returns a query engine from the index."""
+        if self.index is None:
+            self.build_index()
+        return self.index.as_query_engine()
 
-    if "index" not in st.session_state:
-        # Configure the global LLM settings
-        Settings.llm = OpenAI(model="gpt-3.5-turbo", streaming=True)
-        st.session_state.index = build_index()
+class RAGDemoApp:
+    def __init__(self):
+        load_dotenv()
+        self.document_manager = DocumentManager()
+        self.index_manager = IndexManager(self.document_manager)
+        self.setup_streamlit()
 
-    query_engine = st.session_state.index.as_query_engine()
+    def setup_streamlit(self):
+        st.set_page_config(page_title="RAG Demo with LlamaIndex", page_icon=":books:")
+        st.title("RAG Demo using LlamaIndex")
+        st.write("This demo allows you to query documents stored in the `documents` folder.")
 
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
+    def run(self):
+        if "query_engine" not in st.session_state:
+            # Configure the global LLM settings
+            Settings.llm = OpenAI(model="gpt-4o-mini", streaming=True)
+            st.session_state.query_engine = self.index_manager.get_query_engine()
 
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+        if "messages" not in st.session_state:
+            st.session_state.messages = []
 
-    if prompt := st.chat_input("What is up !"):
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        with st.chat_message("user"):
-            st.markdown(prompt)
+        self.display_chat()
 
-        with st.chat_message("assistant"):
-            response = query_engine.query(prompt)
-            st.markdown(response.response)
-            st.session_state.messages.append({"role": "assistant", "content": response.response})
+    def display_chat(self):
+        for message in st.session_state.messages:
+            with st.chat_message(message["role"]):
+                st.markdown(message["content"])
+
+        if prompt := st.chat_input("Ask question about the documents"):
+            st.session_state.messages.append({"role": "user", "content": prompt})
+            with st.chat_message("user"):
+                st.markdown(prompt)
+
+            with st.chat_message("assistant"):
+                response = st.session_state.query_engine.query(prompt)
+                st.markdown(response.response)
+                st.session_state.messages.append({"role": "assistant", "content": response.response})
 
 if __name__ == "__main__":
-    main()
+    app = RAGDemoApp()
+    app.run()

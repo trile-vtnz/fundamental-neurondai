@@ -9,7 +9,7 @@ COPY . /app/
 RUN pip install --no-cache-dir -r requirements.txt 
 
 # Expose the application port
-EXPOSE 8000 6334 6333
+EXPOSE 8000
 
 # Run the application
 CMD python /app/scripts/loadData.py && \

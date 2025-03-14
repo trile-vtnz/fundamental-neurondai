@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "jovial-backup-453504-f0",
+  "private_key_id": "06579f70ac0db6680d9e0f695fb3b3f0bc72687e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCA5Kdu+pFHm5FX\nltaF0QdDFsGcIMIwkKI9hTX494ncdPx2JgDqKyAAzr0lhzSJb5DdlSS2McAMvgKX\nRil+hh67k9lMsdtDqHOUVTu+6aXX7hSWGBEzJ5wfDLvKiwy6kZg6Hx6QZEAdr6yr\n8hP0HCXAgL+P2kTrG4P5ecgStcgIzh8dPcGlXBNjc7wWjYIN90m+Ma7q8G7/fOy+\n5+ZbWKIVT1XOI2mC/MENj8O2Xl03o61ziBq9ifM6Y9SgHvZ1RGds64Wt0omfVV8L\n8SqHQoMOZht0jqM5RmO0e3T2HkY/2Xs4kH5/hZARILwr49PCgtBLKVLBprr/8nyD\nPv9T0dEDAgMBAAECggEAHXHezAwCv0yLLeq/9A717T4YGa4kHosT/SDe3RLTlCDH\ngcgZwmT6qSSRci7KcjEh83S8T8Dawi5wEhXNqeFCyRAz/oDM+c5UJQk5nlnq8IKr\ngkRaPYjpcfBrQBB25nIXSAPO7CZyvTViKV+ibkw11Z2z5U10HA+LnSTUb23GljgJ\nRfQve9py8csGVyZZ6Ci80D24t2biZyD8O5ug8axEFzdSvEmQDM5yrjZTwK1xZ8l8\nUMRhxCbpf3A7RTJIr1SGneObT7etIbCnRmEmIpRYn08UW/h3GSogLx801uj8izZf\n5ZplB0RSZ73FDaCV3+xs8DmS0RAuci5tYQqGvYnSQQKBgQC1wBVeNdMvVXx9RAz8\nxs7M0Htp6A+at2Ri8kITi2oP82Xjggp1NMX7iljCLsSsb0wOo9mp8q4jGMqGo1wB\nFl+9Pc/EV8qXeKnrPwwACOjZ2LHoxLWVC7SFiq2xNO4FROUhDaXjPf7cJ14oycIm\nv7sVKPfbkYH2otneEdb+go5JwwKBgQC1jKJf9sGJBedxiQ7RnfFESbjRbWmtVovq\nzSMvX5QNTEj686oCXP8HTH9YNImxYIswjTR/VazSbNKZr8EsdCKkPlcGqLbWsS0z\niosPznFogzGeD2jVG3vNz/DncneKfqUhRUUROpPzoc3HeBfRcMG/p1pKAn9Zg20U\nQ+gzBPqnwQKBgQCRCFPE1vzL89Kgf1JB0D+r7t3cuELjel7QGnOh9wlO6zKuJtJD\njzZBsLd9VSa6VyIBOLzzweU1uo26fNdpQrppX87Q5iGTV8V4JNplmLZ/SE1H6tjf\ns/R88BoEo7EgYUbaZnKu8ITUl1GrCL02gJ9Alm2bN/TWpENo0yGV/QagUwKBgG37\nUmq8O6Zcs0budtG50u1Bk/sbQ0fFBGIr/8K1LiWYLyYH8tgXqk+rogG3YirYh7nT\n8RequVWIo1SDSo05lbrWITZhgtIw52cv6Oqcb8uWnrpYL3PagHfAHvq3N3/pFPRA\n2ISFbhfLz7OlJxi0LEuEgIgRV0DNA4mhUcuGmqqBAoGAK/AF1cpYw4ifIMgwpJoW\nQE873M4IGD2ghlUjSaBV6dmA4Zk8GZ0gY8GqoQY8SFY7k4t35lKxRgTi1Cq3VqeQ\n7PWygryxvJpetc482+jIZlQTwzt0OLQpU+4Xs0B/95VqoXouLSTKzTlk9BHGMJCC\nFWW09G+qzlquez9bweNfkt0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "tri-le@jovial-backup-453504-f0.iam.gserviceaccount.com",
+  "client_id": "108243029910602141051",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tri-le%40jovial-backup-453504-f0.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

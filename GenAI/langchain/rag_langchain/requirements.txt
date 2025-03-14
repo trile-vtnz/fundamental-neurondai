@@ -1,0 +1,7 @@
+langchain-chroma>=0.1.2
+langchain
+langchain_community
+langchain-openai
+langchain-text-splitters
+youtube-transcript-api
+dotenv
